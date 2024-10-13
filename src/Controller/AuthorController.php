@@ -16,7 +16,7 @@ class AuthorController extends AbstractController
     }
    #[Route("/library",name:"app_library",methods:["GET"])]
     public function index(){
-       return $this->render('author/index.html.twig');
+       return $this->render('author/list.html.twig');
    }
 
    #[Route("/author/{name}",
@@ -34,7 +34,7 @@ class AuthorController extends AbstractController
    #[Route("/list",name:"app_list",methods:["GET"])]
    public function authorList(){
 
-       $this->render('author/list.html.twig',
+       return $this->render('author/list.html.twig',
        [
            'authors'=>$this->authors
        ]);

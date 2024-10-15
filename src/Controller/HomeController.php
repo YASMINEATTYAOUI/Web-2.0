@@ -19,7 +19,6 @@ class HomeController extends AbstractController
     ));
     }
 
-
     #[Route('/contact', name: 'app_contact')] //
     public function contact(): Response
     {

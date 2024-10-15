@@ -18,9 +18,9 @@ class BookController extends AbstractController
     #[Route('/list', name: 'app_list_book')]
     public function list(BookRepository $bookRepository): Response
     {
-        $book = $bookRepository->findAll();
+        $books = $bookRepository->findAll();
         return $this->render('book/list.html.twig', [
-            'books' => $book
+            'books' => $books
         ]);
     }
 
@@ -30,7 +30,7 @@ class BookController extends AbstractController
         $book = $bookRepository->find($id);
         var_dump($book);
         die();
-        return $this->render('crud_book/list.html.twig', [
+        return $this->render('book/list.html.twig', [
             'books' => [$book]
         ]);
     }
@@ -39,9 +39,12 @@ class BookController extends AbstractController
     public function new(ManagerRegistry $doctrine): Response
     {
         $book = new Book();
-        $book->setTitle('My New Book');
-        $book->setDescription('This is a description of my new book.');
 
+        $book->setRef('hgkrteze');
+        $book->setTitle('My New Book');
+        $book->setNbrPages(368);
+        $book ->setPicture('C:\Users\yasmi\Pictures\Screenshots');
+        //$book ->setPublishDate(new \DateTime('now'));
         $entityManager = $doctrine->getManager();
         $entityManager->persist($book);
         $entityManager->flush();
